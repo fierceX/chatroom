@@ -3,3 +3,6 @@
 ################################################################################
 
 /chat/obj/Debug
+/chat/bin/Debug
+/server/bin/Debug
+/server/obj/Debug

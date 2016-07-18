@@ -1,0 +1,50 @@
+﻿<Window x:Class="chat.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:chat"
+        mc:Ignorable="d"
+        Title="聊天室" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+
+        <StackPanel>
+            <TextBlock Text="简易聊天室" FontSize="26" HorizontalAlignment="Center" />
+            <TextBlock Name="Servername" Text="未连接" HorizontalAlignment="Center" />
+        </StackPanel>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBox Name="TextBox" Margin="20,10,20,10" Grid.Row="0" IsReadOnly="True" TextWrapping="Wrap" FontSize="16" />
+                <TextBox Name="Sent" Margin="20,0,20,10" Grid.Row="1" KeyDown="Sent_KeyDown" />
+            </Grid>
+            <Grid Grid.Column="1" Margin="0,0,20,10">
+                <StackPanel>
+                    <TextBlock Margin="2,0,0,10" Text="昵称" FontSize="16" />
+                    <TextBox Margin="2,0,0,10" Name="Name" Width="130" FontSize="16" />
+                    <TextBlock Margin="2,0,0,10" Text="IP地址" FontSize="16" />
+                    <TextBox Margin="2,0,0,10" Name="Ip" Width="130" FontSize="16" />
+                    <TextBlock Margin="2,0,0,10" Text="端口号" FontSize="16" />
+                    <TextBox Margin="2,0,0,10" Name="Point" Width="50" HorizontalAlignment="Left" FontSize="16" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Margin="2,0,0,10" Name="Connect" Content="连接" HorizontalAlignment="Center" Click="Connect_Click" FontSize="16" />
+                        <Button Margin="2,0,0,10" Name="break" Content="断开" HorizontalAlignment="Center" Click="break_Click" FontSize="16" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
