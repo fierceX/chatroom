@@ -56,13 +56,22 @@ namespace server
                 Socket socket = (Socket)s.AsyncState;
                 Socket client = socket.EndAccept(s);
                 //添加该连接到连接池
-                connectpool.Add(client.RemoteEndPoint.ToString(),client);
+                connectpool.Add(client.RemoteEndPoint.ToString(), client);
                 //更新服务器用户列表
                 update(client.RemoteEndPoint.ToString());
                 //继续异步监听
                 socket.BeginAccept(new AsyncCallback(acceptcallback), serversocket);
                 SendMessage sm = new SendMessage(connectpool);
                 sm.sendgroup(client.RemoteEndPoint.ToString() + "：已连接");
+                string message = "\n---------------已支持命令----------------\n"
+                    + "/help    ---获得该帮助命令\n"
+                    + "/list      ---获取用户列表\n"
+                    + "/s xxx   ---搜索xxx用户\n"
+                    + "/sent xxx yyy\n"
+                    + "---向xxx用户单独发送消息yyy\n"
+                    + "---(xxx为ip:端口号)\n"
+                    + "------------------------------------------\n";
+                sm.Send(message, client);
                 Command comm = new Command(connectpool,client);
                 //开始异步接收信息，并将 信息处理 作为回调函数
                 Receive r = new Receive(client,comm.command, connectpool,delete);

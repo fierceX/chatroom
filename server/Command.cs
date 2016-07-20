@@ -20,6 +20,7 @@ namespace server
         Handle list;
         Handle serachip;
         Handle sentsingle;
+        Handle help;
         Socket socket;
         public Command(Hashtable connectpool,Socket s)
         {
@@ -27,8 +28,10 @@ namespace server
             list = new commandlist(connectpool);
             serachip = new serachip(connectpool);
             sentsingle = new sentsingle(connectpool);
+            help = new help(connectpool);
             list.next = serachip;
             serachip.next = sentsingle;
+            sentsingle.next = help;
             socket = s;
         }
         public void command(string s)
@@ -39,7 +42,7 @@ namespace server
             if (a.StartsWith("/"))
             {
                 if (list.handlequest(sm.Send, a, socket))
-                    sm.Send("\n-------------------\n"+a+" 命令错误\n-------------------\n", socket);
+                    sm.Send("\n-----------------------------------------", socket);
             }
             else
                 sm.sendgroup(s);

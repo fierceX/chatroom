@@ -21,12 +21,12 @@ namespace server
         {
             if (s == "/list")
             {
-                string a = "\n----已连接用户----\n";
+                string a = "\n---------------已连接用户----------------\n";
                 foreach (var x in base.connectpool.Keys)
                 {
                     a = a + (string)x + "\n";
                 }
-                a = a + "-------------------\n";
+                a = a + "------------------------------------------\n";
                 bc(a,socket);
                 return false;
             }

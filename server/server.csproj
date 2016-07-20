@@ -58,6 +58,7 @@
     <Compile Include="Command.cs" />
     <Compile Include="commandlist.cs" />
     <Compile Include="Handle.cs" />
+    <Compile Include="help.cs" />
     <Compile Include="Receive.cs" />
     <Compile Include="SendMessage.cs" />
     <Compile Include="sentsingle.cs" />

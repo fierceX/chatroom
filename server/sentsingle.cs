@@ -36,7 +36,7 @@ namespace server
                     sm.Send("--> "+a[0]+" ----\n"+message, socket);
                     return false;
                 }
-                sm.Send("-->未找到该用户\n " + a[0]+"\n------------", socket);
+                sm.Send("--------------未找到该用户--------------\n " + a[0]+ "\n------------------------------------------", socket);
                 return false;
             }
             else if (base.next != null)

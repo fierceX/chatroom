@@ -23,7 +23,7 @@ namespace server
                 bool b = true;
                 char[] f = { 's', ' ' };
                 string a = s.Split(f)[2];
-                string mess = "\n-----查找用户-----\n";
+                string mess = "\n----------------查找用户-----------------\n";
                 foreach (var x in connectpool.Keys)
                 {
                     string v = (string)x;
@@ -35,7 +35,7 @@ namespace server
                 }
                 if (b)
                     mess = mess + "没有找到该IP用户\n";
-                mess = mess + "-------------------\n";
+                mess = mess + "------------------------------------------\n";
                 bc(mess, socket);
                 return false;
             }

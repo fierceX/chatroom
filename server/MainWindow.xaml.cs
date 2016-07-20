@@ -59,6 +59,11 @@ namespace server
         {
             server.Close();
             setstate(true);
+            foreach(Socket x in pool.Values)
+            {
+                x.Close();
+            }
+            connlist.Clear();
             pool.Clear();
         }
         /// <summary>
